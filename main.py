@@ -585,8 +585,13 @@ if __name__ == "__main__":
     # Render (or other hosting platforms) will set the PORT environment variable.
     port = int(os.environ.get("PORT", 8550))
 
-
-ft.app(target=main,port=port,
-        host="0.0.0.0", view=ft.WEB_BROWSER)
-
-
+    # Using ft.FLET_APP_WEB is the more current way to have Flet
+    # attempt to open the application in your default web browser.
+    view_mode = ft.FLET_APP_WEB
+    
+    ft.app(
+        target=main,
+        port=port,
+        host="0.0.0.0",
+        view=view_mode
+    )
